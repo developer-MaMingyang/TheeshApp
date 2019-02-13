@@ -1,5 +1,5 @@
 import { Provider } from 'mobx-react';
-import store from './store';
+import store from './src/stores';
 
 const AppContainer = createAppContainer(AppNavigator);
 
