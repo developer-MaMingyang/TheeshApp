@@ -1,7 +1,4 @@
-const presets = ["react-native"];
-const plugins = [
-    "transform-decorators-legacy",
-    "babel-plugin-transform-runtime"
-];
-
-module.exports = { presets, plugins };
+module.exports = {
+    presets: ['module:metro-react-native-babel-preset'],
+    plugins: [['@babel/plugin-proposal-decorators', { legacy: true }]],
+};

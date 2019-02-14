@@ -5,7 +5,7 @@
 
 import React from 'react';
 import { Image } from 'react-native';
-import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
+import { createBottomTabNavigator, createStackNavigator, createAppContainer } from 'react-navigation';
 import screens from './views';
 import { scaleSize } from './utils/screen';
 import IconStudyActive from './assets/public/study-active.png';
@@ -75,4 +75,4 @@ const AppNavigator = createStackNavigator(
     },
 );
 
-export default AppNavigator;
+export default createAppContainer(AppNavigator);
