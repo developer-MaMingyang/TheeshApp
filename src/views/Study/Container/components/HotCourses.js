@@ -8,13 +8,15 @@ import { View, Text, Image, TouchableWithoutFeedback } from 'react-native';
 import { BoxShadow } from 'react-native-shadow';
 import { inject, observer } from 'mobx-react';
 import { toJS } from 'mobx';
+import navigationUtils from '../../../../utils/navigationUtils';
 import publicStyles from '../../../../styles/public';
 import styles from '../styles';
 import { scaleSize } from '../../../../utils/screen';
 
+const { navigate } = navigationUtils;
+
 @inject(({ HotCoursesStore }) => ({ HotCoursesStore }))
 @observer
-
 class HotCourses extends Component {
     componentDidMount() {
         const { HotCoursesStore: { initHotCourses } } = this.props;
@@ -42,10 +44,10 @@ class HotCourses extends Component {
                         <Text style={styles.hotTitle}>热门课程</Text>
                     </View>
                     <View style={[publicStyles.flexRow, publicStyles.flexWrap, publicStyles.jcSb]}>
-                        {list.map(({ coursePhoto, courseName }, index) => (
+                        {list.map(({ coursePhoto, courseName, id }, index) => (
                             <BoxShadow key={index} setting={options}>
                                 <View style={styles.hotItem}>
-                                    <TouchableWithoutFeedback onPress={() => alert(courseName)}>
+                                    <TouchableWithoutFeedback onPress={() => navigate('CourseList', { title: courseName, id })}>
                                         <View>
                                             <Image source={{ uri: coursePhoto }} style={styles.hotItemImg} />
                                             <Text style={styles.hotItemTitle}>{courseName}</Text>

@@ -6,6 +6,9 @@ import navigationUtils from './src/utils/navigationUtils';
 import AppNavigator from './src/router';
 import store from './src/stores';
 
+import getTheme from './native-base-theme/components';
+import commonColor from './native-base-theme/variables/commonColor';
+
 const { setTopLevelNavigator } = navigationUtils;
 
 export default class App extends Component {
@@ -13,7 +16,7 @@ export default class App extends Component {
         return (
             <Provider {...store}>
                 <Root>
-                    <StyleProvider>
+                    <StyleProvider style={getTheme(commonColor)}>
                         <View style={{ flex: 1 }}>
                             <AppNavigator ref={(navigatorRef) => {
                                 setTopLevelNavigator(navigatorRef);

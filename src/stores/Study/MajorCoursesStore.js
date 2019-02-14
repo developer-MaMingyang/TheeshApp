@@ -9,8 +9,8 @@ import { getMajorCourses } from '../../services/study';
 class MajorCoursesData {
     @observable list = [];
 
-    @action initMajorCourses = async () => {
-        const res = await getMajorCourses();
+    @action initMajorCourses = async (catId) => {
+        const res = await getMajorCourses(catId);
         console.log(res);
         const { data } = res;
         if (Array.isArray(data)) {

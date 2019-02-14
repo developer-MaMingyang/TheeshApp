@@ -61,6 +61,8 @@ const MainStack = createStackNavigator({
         screen: AppStack,
         path: 'app/account',
     },
+    CourseList: screens.CourseList,
+    CourseClass: screens.CourseClass,
 }, {
     headerMode: 'none',
 });
