@@ -10,10 +10,14 @@ export const getHotCourses = () => request(`${root}/course/recommend/query`);
 
 export const getMajorCourses = () => request(`${root}/category/findLevelOne`);
 
-export const getCourseClass = carId => request(`${root}/category/findByCategoryId`, {
-    body: { carId },
+export const getCourseClass = catId => request(`${root}/course/findByCategoryLevelOneId`, {
+    body: { catId },
 });
 
 export const getCourseList = courseId => request(`${root}/lesson/findByCourseId`, {
     body: { courseId },
+});
+
+export const getAuth = videoId => request(`${root}/lesson/findAuthByVideoId`, {
+    body: { videoId },
 });

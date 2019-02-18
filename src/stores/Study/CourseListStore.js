@@ -7,18 +7,21 @@ import { observable, action } from 'mobx';
 import { getCourseList } from '../../services/study';
 
 class CourseListData {
-    @observable list = [];
+    @observable data = { lessons: [] };
+    @observable loading = false;
 
-    @action initCourseList = async () => {
-        const res = await getCourseList();
-        console.log(res);
+    @action initCourseList = async (courseId) => {
+        this.loading = true;
+        const res = await getCourseList(courseId);
         const { data } = res;
-        if (Array.isArray(data)) {
-            this.list = data;
-        } else {
-            this.list = [];
-        }
-    }
+        this.data = Object.assign({}, this.data, data);
+        this.loading = false;
+    };
+
+    @action reset = () => {
+        this.loading = false;
+        this.data = Object.assign({}, this.data, { lessons: [] });
+    };
 }
 
 const CourseListStore = new CourseListData();

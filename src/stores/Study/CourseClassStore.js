@@ -8,9 +8,11 @@ import { getCourseClass } from '../../services/study';
 
 class CourseClassData {
     @observable list = [];
+    @observable loading = false;
 
-    @action initCourseClass = async (courseId) => {
-        const res = await getCourseClass(courseId);
+    @action initCourseClass = async (catId) => {
+        this.loading = true;
+        const res = await getCourseClass(catId);
         console.log(res);
         const { data } = res;
         if (Array.isArray(data)) {
@@ -18,6 +20,12 @@ class CourseClassData {
         } else {
             this.list = [];
         }
+        this.loading = false;
+    };
+
+    @action reset = () => {
+        this.list = [];
+        this.loading = false;
     }
 }
 

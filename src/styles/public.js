@@ -19,6 +19,7 @@ const publicStyles = StyleSheet.create({
     // 位置结束
 
     // margin
+    mt20: { marginTop: scaleSize(20) },
     mb24: { marginBottom: scaleSize(24) },
     mb20: { marginBottom: scaleSize(20) },
     mr20: { marginRight: scaleSize(20) },
@@ -31,10 +32,6 @@ const publicStyles = StyleSheet.create({
     // 字体位置
     taC: { textAlign: 'center' },
     // 字体位置结束
-
-    // 字体大小
-
-    // 字体大小结束
 
     // 字体颜色
 
