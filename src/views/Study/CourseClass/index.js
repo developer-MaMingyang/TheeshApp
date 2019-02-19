@@ -4,15 +4,17 @@
 */
 
 import React, { Component } from 'react';
-import { View, Text, ActivityIndicator, FlatList, TouchableWithoutFeedback } from 'react-native';
+import { View, Text, ActivityIndicator, RefreshControl, TouchableWithoutFeedback, Image } from 'react-native';
 import { Container, Content } from 'native-base';
 import { inject, observer } from 'mobx-react';
 import { toJS } from 'mobx';
+import BoxShadow from 'react-native-shadow/lib/BoxShadow';
 import navigationUtils from '../../../utils/navigationUtils';
 import { Header } from '../../../components/HeaderBar';
 import publicStyles from '../../../styles/public';
 import { fz } from '../../../styles/font';
-import styles from '../CourseList/styles';
+import styles from './styles';
+import { scaleSize } from '../../../utils/screen';
 
 const { navigate } = navigationUtils;
 
@@ -32,28 +34,41 @@ class CourseClass extends Component {
     initList = () => {
         const { CourseClassStore: { list: originList, loading } } = this.props;
         const list = toJS(originList);
-        console.log(list);
+        if (Array.isArray(list) && list.length) {
+            const options = {
+                width: scaleSize(346),
+                height: scaleSize(360),
+                color: '#000',
+                border: scaleSize(6),
+                radius: scaleSize(8),
+                opacity: 0.23,
+                x: 0,
+                y: scaleSize(4),
+                style: { ...publicStyles.mb20 },
+            };
+            return (
+                <View style={[publicStyles.flexRow, publicStyles.flexWrap, publicStyles.jcSb, styles.classContainer]}>
+                    {list.map(({ coursePhoto, courseName, id }, index) => (
+                        <BoxShadow key={index} setting={options}>
+                            <View style={styles.classItem}>
+                                <TouchableWithoutFeedback onPress={() => navigate('CourseList', { title: courseName, id })}>
+                                    <View>
+                                        <Image source={{ uri: coursePhoto }} style={styles.classItemImg} />
+                                        <Text style={styles.classItemTitle}>{courseName}</Text>
+                                    </View>
+                                </TouchableWithoutFeedback>
+                            </View>
+                        </BoxShadow>
+                    ))}
+                </View>
+            );
+        }
         if (loading) {
             return (
                 <View style={[publicStyles.aliC, publicStyles.mt20]}>
                     <ActivityIndicator />
                     <Text style={fz(22)}>加载中。。。</Text>
                 </View>
-            );
-        }
-        if (Array.isArray(list) && list.length) {
-            return (
-                <FlatList
-                    data={list}
-                    keyExtractor={({ id }) => id.toString()}
-                    renderItem={({ item: { courseName, id }, index }) => (
-                        <TouchableWithoutFeedback onPress={() => navigate('CourseList', { title: courseName, id })}>
-                            <View style={[styles.courseItem, publicStyles.jcC]}>
-                                <Text style={styles.courseItemText}>{index + 1}、{courseName}</Text>
-                            </View>
-                        </TouchableWithoutFeedback>
-                    )}
-                />
             );
         }
         return (
@@ -64,10 +79,17 @@ class CourseClass extends Component {
     };
 
     render() {
-        const { navigation: { state: { params: { title } } } } = this.props;
+        const { CourseClassStore: { refreshing, initCourseClass }, navigation: { state: { params: { title, id: catId } } } } = this.props;
         return (
             <Container>
-                <Content>
+                <Content
+                    refreshControl={(
+                        <RefreshControl
+                            refreshing={refreshing}
+                            onRefresh={() => initCourseClass(catId, true)}
+                        />
+                    )}
+                >
                     <Header title={title} />
                     {this.initList()}
                 </Content>

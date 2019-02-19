@@ -9,9 +9,13 @@ import { getCourseClass } from '../../services/study';
 class CourseClassData {
     @observable list = [];
     @observable loading = false;
+    @observable refreshing = false;
 
-    @action initCourseClass = async (catId) => {
+    @action initCourseClass = async (catId, isRefresh) => {
         this.loading = true;
+        if (typeof isRefresh === 'boolean' && isRefresh) {
+            this.refreshing = true;
+        }
         const res = await getCourseClass(catId);
         console.log(res);
         const { data } = res;
@@ -21,6 +25,9 @@ class CourseClassData {
             this.list = [];
         }
         this.loading = false;
+        if (typeof isRefresh === 'boolean' && isRefresh) {
+            this.refreshing = false;
+        }
     };
 
     @action reset = () => {
