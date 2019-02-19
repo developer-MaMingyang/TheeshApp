@@ -9,7 +9,7 @@ import { scaleSize } from '../../../utils/screen';
 const styles = StyleSheet.create({
     // 课程大类
     majorContainer: {
-        paddingTop: scaleSize(100),
+        paddingTop: scaleSize(60),
         marginBottom: scaleSize(56),
     },
     majorCover: {
