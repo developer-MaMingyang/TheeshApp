@@ -4,14 +4,22 @@
 */
 
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { RefreshControl } from 'react-native';
+import { Container, Content } from 'native-base';
+import UserProfile from './components/UserProfile';
+import AccountContainerList from './components/AccountContainerList';
+import LogOut from './components/LogOut';
 
 class AccountContainer extends Component {
     render() {
         return (
-            <View>
-                <Text>呀！</Text>
-            </View>
+            <Container>
+                <Content>
+                    <UserProfile />
+                    <AccountContainerList />
+                    <LogOut />
+                </Content>
+            </Container>
         );
     }
 }

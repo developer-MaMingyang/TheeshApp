@@ -4,9 +4,11 @@
 */
 
 import StudyStore from './Study';
+import AccountStore from './Account';
 
 const store = {
     ...StudyStore,
+    ...AccountStore,
 };
 
 export default store;

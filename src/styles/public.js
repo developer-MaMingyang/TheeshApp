@@ -34,7 +34,7 @@ const publicStyles = StyleSheet.create({
     // 字体位置结束
 
     // 字体颜色
-
+    cWhite: { color: '#fff' },
     // 字体颜色结束
 });
 
