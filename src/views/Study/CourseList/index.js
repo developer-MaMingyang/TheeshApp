@@ -30,12 +30,12 @@ class CourseList extends Component {
     }
 
     initList = () => {
-        const { CourseListStore: { data: { lessons: originList }, loading } } = this.props;
+        const { CourseListStore: { data: { lessons: originList }, loading, refreshing, initCourseList }, navigation: { state: { params: { id: courseId } } } } = this.props;
         let list;
         if (typeof originList === 'object') {
             list = toJS(originList);
         }
-        if (loading) {
+        if (loading && !(list && list.length)) {
             return (
                 <View style={[publicStyles.aliC, publicStyles.mt20]}>
                     <ActivityIndicator />
@@ -48,6 +48,8 @@ class CourseList extends Component {
                 <FlatList
                     data={list}
                     keyExtractor={({ id }) => id.toString()}
+                    refreshing={refreshing}
+                    onRefresh={() => initCourseList(courseId, true)}
                     renderItem={({ item: { lessonName, videoId, coverUrl }, index }) => (
                         <TouchableWithoutFeedback onPress={() => navigate('CoursePlay', { lessonName, videoId, coverUrl })}>
                             <View style={[styles.courseItem, publicStyles.jcC]}>

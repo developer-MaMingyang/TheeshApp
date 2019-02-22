@@ -9,13 +9,20 @@ import { getCourseList } from '../../services/study';
 class CourseListData {
     @observable data = { lessons: [] };
     @observable loading = false;
+    @observable refreshing = false;
 
-    @action initCourseList = async (courseId) => {
+    @action initCourseList = async (courseId, isRefresh) => {
         this.loading = true;
+        if (isRefresh) {
+            this.refreshing = true;
+        }
         const res = await getCourseList(courseId);
         const { data } = res;
         this.data = Object.assign({}, this.data, data);
         this.loading = false;
+        if (isRefresh) {
+            this.refreshing = false;
+        }
     };
 
     @action reset = () => {
