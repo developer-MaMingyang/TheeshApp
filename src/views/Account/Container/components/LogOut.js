@@ -14,8 +14,8 @@ import { fz } from '../../../../styles/font';
 @observer
 class LogOut extends Component {
     render() {
-        const { AccountContainerStore: { userInfo: { userAcc } } } = this.props;
-        if (userAcc) {
+        const { AccountContainerStore } = this.props;
+        if (AccountContainerStore.userInfo.userAcc) {
             return (
                 <View style={publicStyles.aliC}>
                     <TouchableOpacity style={[publicStyles.aliC, publicStyles.jcC, styles.logOutBtn]} onPress={() => alert('clicked 退出登录')}>
