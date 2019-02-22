@@ -46,7 +46,7 @@ const AppStack = createBottomTabNavigator({
             borderTopWidth: 0,
         },
         labelStyle: {
-            fontSize: scaleSize(20),
+            fontSize: scaleSize(25),
         },
         showIcon: true,
     },
