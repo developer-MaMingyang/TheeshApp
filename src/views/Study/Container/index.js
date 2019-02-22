@@ -6,8 +6,8 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { Container, Content } from 'native-base';
-import MajorCourses from './components/MajorCourses';
-import HotCourses from './components/HotCourses';
+import MajorCourses from './modules/MajorCourses';
+import HotCourses from './modules/HotCourses';
 import { Color } from '../../../utils/constants';
 
 const { bgGray: backgroundColor } = Color;

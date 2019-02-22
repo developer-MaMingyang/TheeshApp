@@ -6,9 +6,9 @@
 import React, { Component } from 'react';
 import { RefreshControl } from 'react-native';
 import { Container, Content } from 'native-base';
-import UserProfile from './components/UserProfile';
-import AccountContainerList from './components/AccountContainerList';
-import LogOut from './components/LogOut';
+import UserProfile from './modules/UserProfile';
+import AccountContainerList from './modules/AccountContainerList';
+import LogOut from './modules/LogOut';
 
 class AccountContainer extends Component {
     render() {
