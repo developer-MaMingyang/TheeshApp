@@ -4,9 +4,13 @@
 */
 
 import AccountContainer from './Container';
+import Login from './Login';
+import Register from './Register';
 
 const AccountScreen = {
     AccountContainer,
+    Login,
+    Register,
 };
 
 export default AccountScreen;

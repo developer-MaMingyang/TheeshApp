@@ -12,7 +12,7 @@ import BoxShadow from 'react-native-shadow/lib/BoxShadow';
 import navigationUtils from '../../../utils/navigationUtils';
 import { Header } from '../../../components/HeaderBar';
 import publicStyles from '../../../styles/public';
-import { fz } from '../../../styles/font';
+import { fz } from '../../../styles/size';
 import styles from './styles';
 import { scaleSize } from '../../../utils/screen';
 

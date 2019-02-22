@@ -8,7 +8,7 @@ import { View, Text, Image, TouchableWithoutFeedback } from 'react-native';
 import { Icon } from 'native-base';
 import publicStyles from '../../styles/public';
 import styles from './styles';
-import { fz } from '../../styles/font';
+import { fz } from '../../styles/size';
 
 class MenuItem extends Component {
     render() {

@@ -4,9 +4,13 @@
 */
 
 import AccountContainerStore from './AccountContainerStore';
+import LoginStore from './LoginStore';
+import RegisterStore from './RegisterStore';
 
 const AccountStore = {
     AccountContainerStore,
+    LoginStore,
+    RegisterStore,
 };
 
 export default AccountStore;

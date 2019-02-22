@@ -4,7 +4,7 @@
 */
 
 import { StyleSheet } from 'react-native';
-import {scaleSize} from '../utils/screen';
+import { scaleSize } from '../utils/screen';
 
 const publicStyles = StyleSheet.create({
     // 排版
@@ -35,6 +35,8 @@ const publicStyles = StyleSheet.create({
 
     // 字体颜色
     cWhite: { color: '#fff' },
+    cBlue: { color: '#409eff' },
+    cGray: { color: '#ededed' },
     // 字体颜色结束
 });
 

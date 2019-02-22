@@ -30,7 +30,7 @@ class UserProfile extends Component {
                 <TouchableWithoutFeedback onPress={this.doLogin}>
                     <View style={publicStyles.aliC}>
                         <Image source={AvatarPlaceholder} style={styles.avatarImg} />
-                        <Text style={styles.avatarText}>{AccountContainerStore.userInfo.userAcc || '未登录'}</Text>
+                        <Text style={styles.avatarText}>{AccountContainerStore.userInfo.userAcc ? `您好，${AccountContainerStore.userInfo.userAcc}` : '未登录'}</Text>
                     </View>
                 </TouchableWithoutFeedback>
             </View>

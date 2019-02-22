@@ -8,17 +8,18 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { inject, observer } from 'mobx-react';
 import publicStyles from '../../../../styles/public';
 import styles from '../styles';
-import { fz } from '../../../../styles/font';
+import { fz } from '../../../../styles/size';
 
 @inject(({ AccountContainerStore }) => ({ AccountContainerStore }))
 @observer
 class LogOut extends Component {
     render() {
         const { AccountContainerStore } = this.props;
+        const { logOut } = AccountContainerStore;
         if (AccountContainerStore.userInfo.userAcc) {
             return (
                 <View style={publicStyles.aliC}>
-                    <TouchableOpacity style={[publicStyles.aliC, publicStyles.jcC, styles.logOutBtn]} onPress={() => alert('clicked 退出登录')}>
+                    <TouchableOpacity style={[publicStyles.aliC, publicStyles.jcC, styles.logOutBtn]} onPress={logOut}>
                         <View>
                             <Text style={[fz(30), publicStyles.cWhite]}>退出登录</Text>
                         </View>

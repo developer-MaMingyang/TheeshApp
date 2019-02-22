@@ -12,7 +12,7 @@ import navigationUtils from '../../../utils/navigationUtils';
 import { Header } from '../../../components/HeaderBar';
 import publicStyles from '../../../styles/public';
 import styles from './styles';
-import { fz } from '../../../styles/font';
+import { fz } from '../../../styles/size';
 
 const { navigate } = navigationUtils;
 

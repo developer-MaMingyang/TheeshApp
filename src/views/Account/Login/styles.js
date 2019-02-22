@@ -1,22 +1,22 @@
 /*
 * author: mamingyang@baofeng.com
-* date: 2019/2/18
+* date: 2019/2/22
 */
 
 import { StyleSheet } from 'react-native';
 import { scaleSize } from '../../../utils/screen';
-import { fz } from '../../../styles/size';
 
 const styles = StyleSheet.create({
-    courseItem: {
-        height: scaleSize(80),
-        borderBottomWidth: 1,
-        borderBottomColor: '#cccccc',
-    },
-    courseItemText: {
-        ...fz(25),
+    loginWrapper: {
+        paddingTop: scaleSize(30),
         paddingLeft: scaleSize(20),
         paddingRight: scaleSize(20),
+    },
+    loginBtnWrapper: {
+        width: '90%',
+        height: scaleSize(80),
+        borderRadius: scaleSize(6),
+        backgroundColor: '#409eff',
     },
 });
 
