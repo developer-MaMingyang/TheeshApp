@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     header: {
         backgroundColor: '#fff',
         borderBottomColor: '#ededed',
-        height: scaleSize(128),
+        height: scaleSize(148),
         ...Platform.select({
             ios: {
                 borderBottomWidth: 1,
@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
             android: {
                 borderBottomWidth: 1,
                 elevation: 0,
+                paddingTop: scaleSize(30),
             },
         }),
     },
@@ -30,13 +31,13 @@ const styles = StyleSheet.create({
     },
     headerLeftMin: {
         color: '#999',
-        fontSize: 20,
+        fontSize: 15,
         ...Platform.select({
             ios: {
-                marginLeft: scaleSize(10),
+                marginLeft: scaleSize(20),
             },
             android: {
-                marginLeft: scaleSize(0),
+                marginLeft: scaleSize(10),
             },
         }),
     },

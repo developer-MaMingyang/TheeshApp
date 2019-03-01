@@ -4592,6 +4592,10 @@ react-native-shadow@^1.2.2:
   version "1.2.2"
   resolved "http://registry.npm.taobao.org/react-native-shadow/download/react-native-shadow-1.2.2.tgz#08991cd14b71e32f2fc6363911c139d231949a66"
 
+react-native-splash-screen@^3.2.0:
+  version "3.2.0"
+  resolved "http://registry.npm.taobao.org/react-native-splash-screen/download/react-native-splash-screen-3.2.0.tgz#d47ec8557b1ba988ee3ea98d01463081b60fff45"
+
 react-native-svg@^9.2.4:
   version "9.2.4"
   resolved "http://registry.npm.taobao.org/react-native-svg/download/react-native-svg-9.2.4.tgz#a30ee42535b39097e7b68dfa6dcf5c1c8cce97f1"
