@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.8.1/skins/default/aliplayer-min.css">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="player-wrap" style="width: 100%;"></div>
+<script src="https://g.alicdn.com/de/prismplayer/2.8.1/aliplayer-min.js"></script>
+<script>
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+    var a = new Aliplayer({ // eslint-disable-line
+        id: 'player-wrap',
+        // width: getQueryString('deviceWidth') + 'px',
+        // height: getQueryString('deviceHeight') ? (getQueryString('deviceHeight') + 'px') :((Math.round(getQueryString('deviceWidth') / 48 * 27)) + 'px'),
+        autoplay: false,
+        vid: getQueryString('videoId'),
+        playauth: getQueryString('playAuth'),
+        cover: getQueryString('coverUrl'),
+    });
+    a.on('play', function () {
+        window.postMessage('play')
+    })
+    a.on('pause', function () {
+        window.postMessage('pause')
+    })
+    document.addEventListener('message', function (msg) {
+        alert(JSON.stringify(msg))
+    })
+</script>
+</body>
+</html>
