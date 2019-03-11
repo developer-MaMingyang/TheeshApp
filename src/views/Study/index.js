@@ -6,13 +6,11 @@
 import StudyContainer from './Container';
 import CourseList from './CourseList'; // 课程列表(由热门课程中的课程点击进入)
 import CourseClass from './CourseClass'; // 课程大类(由首页顶部课程分类点击进入)
-import CoursePlay from './CoursePlay'; // 课程播放页
 
 const StudyScreen = {
     StudyContainer,
     CourseList,
     CourseClass,
-    CoursePlay,
 };
 
 export default StudyScreen;

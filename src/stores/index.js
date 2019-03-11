@@ -5,10 +5,12 @@
 
 import StudyStore from './Study';
 import AccountStore from './Account';
+import OthersStore from './Others';
 
 const store = {
     ...StudyStore,
     ...AccountStore,
+    ...OthersStore,
 };
 
 export default store;
