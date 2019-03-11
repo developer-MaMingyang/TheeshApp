@@ -47,6 +47,12 @@ class CourseListData {
     @action reset = () => {
         this.loading = false;
         this.data = Object.assign({}, this.data, { lessons: [] });
+        this.loadingPlayAuth = false;
+        this.currentPlay = {
+            playAuth: '',
+            videoId: '',
+            coverUrl: '',
+        };
     };
 }
 
