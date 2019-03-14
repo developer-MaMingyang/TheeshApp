@@ -6,11 +6,13 @@
 import AccountContainer from './Container';
 import Login from './Login';
 import Register from './Register';
+import ForgetPwd from './ForgetPwd';
 
 const AccountScreen = {
     AccountContainer,
     Login,
     Register,
+    ForgetPwd,
 };
 
 export default AccountScreen;

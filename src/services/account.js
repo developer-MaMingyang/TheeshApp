@@ -14,8 +14,8 @@ export const doLogin = ({ phone, password }) => request(`${root}/user/login`, {
 
 export const getMsg = params => request(`${root}/user/sendMessage`, {
     body: { params },
-}); // 注册：phone, type: register
+}); // 注册：phone, type: register，type目前不传
 
-export const doRegister = (phone, password, code) => request(`${root}/user/register`, {
-    body: { phone, password, code },
+export const doRegister = ({ nickName, phone, password, code }) => request(`${root}/user/register`, {
+    body: { nickName, phone, password, code },
 });

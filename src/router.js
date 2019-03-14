@@ -65,6 +65,7 @@ const MainStack = createStackNavigator({
     CourseClass: screens.CourseClass,
     Login: screens.Login,
     Register: screens.Register,
+    ForgetPwd: screens.ForgetPwd,
 }, {
     headerMode: 'none',
 });

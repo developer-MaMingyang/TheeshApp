@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     },
     videoWrapper: {
         width: deviceWidth,
-        height: deviceWidth / 48 * 27,
+        height: Math.ceil(deviceWidth / 48 * 27),
     },
     courseItem: {
         height: scaleSize(80),

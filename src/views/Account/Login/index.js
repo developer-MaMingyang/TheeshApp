@@ -56,6 +56,12 @@ class Login extends Component {
                             </TouchableOpacity>
                         </View>
                         <View style={publicStyles.aliC}>
+                            <View style={[publicStyles.flexRow, mb(25)]}>
+                                <Text style={[fz(25)]}>忘记密码？</Text>
+                                <TouchableOpacity onPress={() => navigate('ForgetPwd')}>
+                                    <Text style={[fz(25), publicStyles.cBlue]}>点我找回</Text>
+                                </TouchableOpacity>
+                            </View>
                             <View style={publicStyles.flexRow}>
                                 <Text style={[fz(25)]}>没有账号？</Text>
                                 <TouchableOpacity onPress={() => navigate('Register')}>

@@ -1,29 +1,27 @@
 /*
 * author: mamingyang@baofeng.com
-* date: 2019/2/22
+* date: 2019/3/13
 */
 
 import { observable, action } from 'mobx';
-import { toast, checkErrorCode } from '../../utils/utils';
 import { doRegister, getMsg } from '../../services/account';
+import { checkErrorCode, toast } from '../../utils/utils';
 
-class RegisterData {
-    @observable nickName = '';
+class ForgetPwdData {
     @observable userAcc = '';
-    @observable userPwd = '';
     @observable msgVc = '';
     @observable msgLeftTime = -1;
     @observable msgInterval = null;
+    @observable newPwd = '';
 
-    @action register = async () => {
-        const res = await doRegister({
-            nickName: this.nickName,
+    @action modifyPwd = async () => {
+        const res = await doRegister({ // 改成忘记密码的
             phone: this.userAcc,
-            password: this.userPwd,
+            password: this.newPwd,
             code: this.msgVc,
         });
         if (checkErrorCode(res)) {
-            toast('注册成功，快去登录吧');
+            toast('修改密码成功');
             return this.userAcc;
         }
         return '';
@@ -62,13 +60,12 @@ class RegisterData {
     };
 
     @action reset = () => {
-        this.nickName = '';
         this.userAcc = '';
-        this.userPwd = '';
         this.msgVc = '';
+        this.newPwd = '';
     }
 }
 
-const RegisterStore = new RegisterData();
+const ForgetPwdStore = new ForgetPwdData();
 
-export default RegisterStore;
+export default ForgetPwdStore;

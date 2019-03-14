@@ -17,6 +17,12 @@ class Player extends Component {
         this.webView = '';
     }
 
+    componentWillUnmount() {
+        const { PlayerStore: { toggleFullScreen } } = this.props;
+        toggleFullScreen(false);
+        StatusBar.setHidden(false);
+    }
+
     handleMessage = (event) => {
         const { PlayerStore: { toggleFullScreen } } = this.props;
         console.log(event.nativeEvent.data);
@@ -47,6 +53,7 @@ class Player extends Component {
                 <View />
             );
         }
+        console.log(`http://192.168.131.2/video.html?playAuth=${playAuth}&coverUrl=${coverUrl}&videoId=${videoId}&deviceWidth=${deviceWidth}`);
         return (
             <View>
                 <WebView
