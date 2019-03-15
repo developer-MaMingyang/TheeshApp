@@ -7,6 +7,7 @@ import React, { Component } from 'react';
 import { WebView, StatusBar } from 'react-native';
 import { Container } from 'native-base';
 import { inject, observer } from 'mobx-react';
+import Orientation from 'react-native-orientation';
 import { Header } from '../../../components/HeaderBar';
 
 @inject(({ CourseListStore }) => ({ CourseListStore }))
@@ -20,6 +21,7 @@ class CourseList extends Component {
     }
 
     componentWillUnmount() {
+        Orientation.lockToPortrait();
         StatusBar.setHidden(false);
     }
 
@@ -28,10 +30,12 @@ class CourseList extends Component {
         case 'full-screen':
             this.setState({ isFullScreen: true });
             StatusBar.setHidden(true);
+            Orientation.lockToLandscape();
             break;
         case 'cancel-full-screen':
             this.setState({ isFullScreen: false });
             StatusBar.setHidden(false);
+            Orientation.lockToPortrait();
             break;
         default:
         }
@@ -43,7 +47,7 @@ class CourseList extends Component {
             <Container>
                 {!this.state.isFullScreen && (<Header title={title} />)}
                 <WebView
-                    source={{ uri: `http://192.168.131.2:8080/#/course-list?courseId=${courseId}&source=app` }}
+                    source={{ uri: `http://192.168.131.2:8080/course/list/${courseId}?source=app` }}
                     onMessage={this.handleMessage.bind(this)}
                 />
             </Container>

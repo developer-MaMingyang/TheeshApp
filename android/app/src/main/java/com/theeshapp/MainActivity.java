@@ -3,6 +3,8 @@ package com.theeshapp;
 import android.os.Bundle;
 import com.facebook.react.ReactActivity;
 import org.devio.rn.splashscreen.SplashScreen;
+import android.content.Intent; // <--- import
+import android.content.res.Configuration; // <--- import
 
 public class MainActivity extends ReactActivity {
 
@@ -14,6 +16,13 @@ public class MainActivity extends ReactActivity {
     protected String getMainComponentName() {
         return "TheeshApp";
     }
+    @Override
+          public void onConfigurationChanged(Configuration newConfig) {
+            super.onConfigurationChanged(newConfig);
+            Intent intent = new Intent("onConfigurationChanged");
+            intent.putExtra("newConfig", newConfig);
+            this.sendBroadcast(intent);
+        }
     @Override
         protected void onCreate(Bundle savedInstanceState) {
             SplashScreen.show(this);  // here
