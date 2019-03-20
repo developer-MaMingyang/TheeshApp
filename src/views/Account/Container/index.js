@@ -4,7 +4,6 @@
 */
 
 import React, { Component } from 'react';
-import { RefreshControl } from 'react-native';
 import { Container, Content } from 'native-base';
 import UserProfile from './modules/UserProfile';
 import AccountContainerList from './modules/AccountContainerList';

@@ -5,21 +5,32 @@
 
 import { observable, action } from 'mobx';
 import { toast, checkErrorCode } from '../../utils/utils';
-import { doLogOut } from '../../services/account';
+import { doLogOut, getUserInfo } from '../../services/account';
 
 class AccountContainerData {
-    @observable userInfo = { userAcc: '' };
+    @observable loaded = false;
+    @observable userInfo = {};
 
     @action logOut = async () => {
         const res = await doLogOut();
         if (checkErrorCode(res)) {
             toast('您已安全退出登录');
-            this.userInfo.userAcc = '';
+            this.userInfo = {};
         }
     };
 
-    @action initUserInfo = (userAcc) => {
-        this.userInfo = { userAcc };
+    @action initUserInfo = async () => {
+        const res = await getUserInfo();
+        const { data } = res;
+        if (data) {
+            this.userInfo = Object.assign({}, this.userInfo, data);
+        }
+        this.loaded = true;
+    };
+
+    @action reset = () => {
+        this.loaded = false;
+        this.userInfo = {};
     }
 }
 

@@ -15,13 +15,13 @@ import { fz, mb, mr } from '../../../styles/size';
 
 const { pop } = navigationUtils;
 
-@inject(({ ForgetPwdStore }) => ({ ForgetPwdStore }))
+@inject(({ AccountContainerStore, ForgetPwdStore }) => ({ AccountContainerStore, ForgetPwdStore }))
 @observer
 class ForgetPwd extends Component {
     doModify = async () => {
-        const { AccountContainerStore: { initUserInfo }, ForgetPwdStore: { modifyPwd, userAcc } } = this.props;
+        const { AccountContainerStore: { initUserInfo }, ForgetPwdStore: { modifyPwd } } = this.props;
         if (await modifyPwd()) {
-            initUserInfo(userAcc);
+            initUserInfo();
             pop();
         }
     };

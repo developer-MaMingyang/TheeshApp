@@ -47,7 +47,7 @@ class CourseList extends Component {
             <Container>
                 {!this.state.isFullScreen && (<Header title={title} />)}
                 <WebView
-                    source={{ uri: `http://192.168.131.2:8080/course/list/${courseId}?source=app` }}
+                    source={{ uri: `http://192.168.0.104:8080/h5/course/list/${courseId}?source=app` }}
                     onMessage={this.handleMessage.bind(this)}
                 />
             </Container>

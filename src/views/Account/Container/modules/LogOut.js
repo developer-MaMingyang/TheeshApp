@@ -15,8 +15,8 @@ import { fz } from '../../../../styles/size';
 class LogOut extends Component {
     render() {
         const { AccountContainerStore } = this.props;
-        const { logOut } = AccountContainerStore;
-        if (AccountContainerStore.userInfo.userAcc) {
+        const { logOut, userInfo } = AccountContainerStore;
+        if (userInfo.phone) {
             return (
                 <View style={publicStyles.aliC}>
                     <TouchableOpacity style={[publicStyles.aliC, publicStyles.jcC, styles.logOutBtn]} onPress={logOut}>

@@ -4,7 +4,7 @@
 */
 
 import { observable, action } from 'mobx';
-import { doRegister, getMsg } from '../../services/account';
+import { doForgetPwd, getMsg } from '../../services/account';
 import { checkErrorCode, toast } from '../../utils/utils';
 
 class ForgetPwdData {
@@ -15,14 +15,15 @@ class ForgetPwdData {
     @observable newPwd = '';
 
     @action modifyPwd = async () => {
-        const res = await doRegister({ // 改成忘记密码的
+        const res = await doForgetPwd({
             phone: this.userAcc,
             password: this.newPwd,
             code: this.msgVc,
         });
+        console.log(res);
         if (checkErrorCode(res)) {
             toast('修改密码成功');
-            return this.userAcc;
+            return true;
         }
         return '';
     };

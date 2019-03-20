@@ -16,23 +16,47 @@ const { navigate } = navigationUtils;
 @inject(({ AccountContainerStore }) => ({ AccountContainerStore }))
 @observer
 class UserProfile extends Component {
+    componentWillMount() {
+        const { AccountContainerStore: { initUserInfo } } = this.props;
+        initUserInfo();
+    }
+
+    componentWillUnmount() {
+        const { AccountContainerStore: { reset } } = this.props;
+        reset();
+    }
+
     doLogin = () => {
-        const { AccountContainerStore } = this.props;
-        if (!AccountContainerStore.userInfo.userAcc) {
+        const { AccountContainerStore: { userInfo } } = this.props;
+        console.log(userInfo.phone);
+        if (!userInfo.phone) {
             navigate('Login');
         }
     };
 
     render() {
-        const { AccountContainerStore } = this.props;
+        const { AccountContainerStore: { userInfo, loaded } } = this.props;
         return (
             <View style={styles.avatarBox}>
-                <TouchableWithoutFeedback onPress={this.doLogin}>
-                    <View style={publicStyles.aliC}>
-                        <Image source={AvatarPlaceholder} style={styles.avatarImg} />
-                        <Text style={styles.avatarText}>{AccountContainerStore.userInfo.userAcc ? `您好，${AccountContainerStore.userInfo.userAcc}` : '未登录'}</Text>
-                    </View>
-                </TouchableWithoutFeedback>
+                {
+                    loaded ? (
+                        <TouchableWithoutFeedback onPress={this.doLogin}>
+                            {
+                                userInfo.phone ? (
+                                    <View style={publicStyles.aliC}>
+                                        <Image source={AvatarPlaceholder} style={styles.avatarImg} />
+                                        <Text style={styles.avatarText}>{userInfo.nickName || userInfo.phone}</Text>
+                                    </View>
+                                ) : (
+                                    <View style={publicStyles.aliC}>
+                                        <Image source={AvatarPlaceholder} style={styles.avatarImg} />
+                                        <Text style={styles.avatarText}>未登录</Text>
+                                    </View>
+                                )
+                            }
+                        </TouchableWithoutFeedback>
+                    ) : null
+                }
             </View>
         );
     }
