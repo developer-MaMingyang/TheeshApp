@@ -6,6 +6,7 @@
 import { observable, action } from 'mobx';
 import { toast, checkErrorCode } from '../../utils/utils';
 import { doRegister, getMsg } from '../../services/account';
+import { checkMsgVc, checkPhone, checkPwd } from '../../utils/rules';
 
 class RegisterData {
     @observable nickName = '';
@@ -16,6 +17,15 @@ class RegisterData {
     @observable msgInterval = null;
 
     @action register = async () => {
+        if (!checkPhone(this.userAcc)) {
+            return;
+        }
+        if (!checkMsgVc(this.msgVc)) {
+            return;
+        }
+        if (!checkPwd(this.userPwd)) {
+            return;
+        }
         const res = await doRegister({
             nickName: this.nickName,
             phone: this.userAcc,
@@ -24,9 +34,9 @@ class RegisterData {
         });
         if (checkErrorCode(res)) {
             toast('注册成功，快去登录吧');
-            return this.userAcc;
+            return true;
         }
-        return '';
+        return false;
     };
 
     @action startMsgInterval = () => {

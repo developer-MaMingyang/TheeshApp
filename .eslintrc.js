@@ -47,6 +47,8 @@ module.exports = {
         "no-await-in-loop": 0,
         "radix": 0,
         "no-lonely-if": 0,
+        "consistent-return": 0,
+        "react/jsx-no-bind": 0,
     },
     "globals": {
         "__DEV__": true,

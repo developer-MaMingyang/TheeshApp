@@ -19,9 +19,8 @@ const { pop } = navigationUtils;
 @observer
 class ForgetPwd extends Component {
     doModify = async () => {
-        const { AccountContainerStore: { initUserInfo }, ForgetPwdStore: { modifyPwd } } = this.props;
+        const { ForgetPwdStore: { modifyPwd } } = this.props;
         if (await modifyPwd()) {
-            initUserInfo();
             pop();
         }
     };

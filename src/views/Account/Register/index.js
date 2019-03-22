@@ -24,9 +24,8 @@ class Register extends Component {
     }
 
     doRegister = async () => {
-        const { AccountContainerStore: { initUserInfo }, RegisterStore: { register, userAcc } } = this.props;
+        const { RegisterStore: { register } } = this.props;
         if (await register()) {
-            initUserInfo(userAcc);
             pop();
         }
     };

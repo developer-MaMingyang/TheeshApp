@@ -6,26 +6,28 @@
 import { observable, action } from 'mobx';
 import { toast, checkErrorCode } from '../../utils/utils';
 import { doLogin } from '../../services/account';
+import { checkPhone, checkPwd } from '../../utils/rules';
 
 class LoginData {
     @observable userAcc = '';
     @observable userPwd = '';
 
     @action login = async () => {
+        if (!checkPhone(this.userAcc)) {
+            return;
+        }
+        if (!checkPwd(this.userPwd)) {
+            return;
+        }
         const res = await doLogin({
             phone: this.userAcc,
             password: this.userPwd,
         });
-        console.log({
-            phone: this.userAcc,
-            password: this.userPwd,
-            res,
-        });
         if (checkErrorCode(res)) {
             toast('登录成功');
-            return this.userAcc;
+            return true;
         }
-        return '';
+        return false;
     };
 
     @action setData = (key, value) => {

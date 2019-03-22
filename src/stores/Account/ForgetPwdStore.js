@@ -6,6 +6,7 @@
 import { observable, action } from 'mobx';
 import { doForgetPwd, getMsg } from '../../services/account';
 import { checkErrorCode, toast } from '../../utils/utils';
+import { checkMsgVc, checkPhone, checkPwd } from '../../utils/rules';
 
 class ForgetPwdData {
     @observable userAcc = '';
@@ -15,17 +16,25 @@ class ForgetPwdData {
     @observable newPwd = '';
 
     @action modifyPwd = async () => {
+        if (!checkPhone(this.userAcc)) {
+            return;
+        }
+        if (!checkMsgVc(this.msgVc)) {
+            return;
+        }
+        if (!checkPwd(this.userPwd)) {
+            return;
+        }
         const res = await doForgetPwd({
             phone: this.userAcc,
             password: this.newPwd,
             code: this.msgVc,
         });
-        console.log(res);
         if (checkErrorCode(res)) {
             toast('修改密码成功');
             return true;
         }
-        return '';
+        return false;
     };
 
     @action startMsgInterval = () => {
