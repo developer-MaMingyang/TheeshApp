@@ -22,6 +22,7 @@ class AccountContainerData {
     @action initUserInfo = async () => {
         const res = await getUserInfo();
         const { data } = res;
+        console.log(data);
         if (data) {
             this.userInfo = Object.assign({}, this.userInfo, data);
         }

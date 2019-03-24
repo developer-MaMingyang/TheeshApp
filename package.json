@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "react-native start",
+    "start": "react-native start --port 8083",
     "run-dev": "react-native run-android",
     "build-android-apk": "cd android/ && ./gradlew assembleRelease",
     "test": "jest"
@@ -20,6 +20,7 @@
     "react-native-shadow": "^1.2.2",
     "react-native-splash-screen": "^3.2.0",
     "react-native-svg": "^9.2.4",
+    "react-native-syan-image-picker": "^0.3.3",
     "react-native-vector-icons": "^6.3.0",
     "react-navigation": "^3.2.1"
   },

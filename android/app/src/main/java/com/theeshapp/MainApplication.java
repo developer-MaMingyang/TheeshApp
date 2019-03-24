@@ -3,6 +3,7 @@ package com.theeshapp;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.reactlibrary.RNSyanImagePickerPackage;
 import com.github.yamill.orientation.OrientationPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -28,6 +29,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNSyanImagePickerPackage(),
             new OrientationPackage(),
             new SplashScreenReactPackage(),
             new VectorIconsPackage(),

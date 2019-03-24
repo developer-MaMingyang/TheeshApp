@@ -1,4 +1,5 @@
 import React from 'react';
+import { StatusBar } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import * as NB from 'native-base';
 import NavigationUtils from '../../utils/navigationUtils';
@@ -20,6 +21,7 @@ function HeaderView(props) {
     const { title, noLeft, leftIcon = 'arrow-left', iconType = 'SimpleLineIcons', noborder, navigation, backTarget } = props;
     return (
         <NB.Header style={[styles.header, noborder && styles.headerNoborder]}>
+            <StatusBar backgroundColor="transparent" />
             <NB.Left style={styles.headerLeft}>
                 {
                     !noLeft && (

@@ -25,3 +25,11 @@ export const doRegister = ({ nickName, phone, password, code }) => request(`${ro
 export const doForgetPwd = ({ phone, password, code }) => request(`${root}/user/forgetPassword`, {
     body: { phone, password, code },
 });
+
+// 上传图片获取token
+export const getUploadImageToken = () => request(`${root}/base/getUploadImageToken`);
+
+// 修改资料
+export const modifyUserInfo = ({ id, nickName, description }) => request(`${root}/user/saveData`, {
+    body: { id, nickName, description }
+});

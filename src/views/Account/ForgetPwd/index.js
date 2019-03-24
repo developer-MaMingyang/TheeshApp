@@ -29,7 +29,7 @@ class ForgetPwd extends Component {
         const { ForgetPwdStore: { userAcc, msgVc, msgLeftTime, getMsgVc, newPwd, setData } } = this.props;
         return (
             <Container>
-                <Header title="忘记密码" />
+                <Header title="找回密码" />
                 <Content>
                     <View style={styles.forgetPwdWrapper}>
                         <View style={mb(25)}>

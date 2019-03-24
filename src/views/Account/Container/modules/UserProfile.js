@@ -28,7 +28,6 @@ class UserProfile extends Component {
 
     doLogin = () => {
         const { AccountContainerStore: { userInfo } } = this.props;
-        console.log(userInfo.phone);
         if (!userInfo.phone) {
             navigate('Login');
         }
@@ -45,7 +44,7 @@ class UserProfile extends Component {
                                 userInfo.phone ? (
                                     <View style={publicStyles.aliC}>
                                         <Image source={AvatarPlaceholder} style={styles.avatarImg} />
-                                        <Text style={styles.avatarText}>{userInfo.nickName || userInfo.phone}</Text>
+                                        <Text style={styles.avatarText}>您好，{userInfo.nickName || userInfo.phone}</Text>
                                     </View>
                                 ) : (
                                     <View style={publicStyles.aliC}>

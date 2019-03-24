@@ -16,6 +16,7 @@ const publicStyles = StyleSheet.create({
     aliC: { alignItems: 'center' },
     jcC: { justifyContent: 'center' },
     jcSb: { justifyContent: 'space-between' },
+    fr: { marginLeft: 'auto' },
     // 位置结束
 
     // margin
