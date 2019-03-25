@@ -38,6 +38,7 @@ const publicStyles = StyleSheet.create({
     cWhite: { color: '#fff' },
     cBlue: { color: '#409eff' },
     cGray: { color: '#ededed' },
+    c3: { color: '#333333' },
     // 字体颜色结束
 });
 

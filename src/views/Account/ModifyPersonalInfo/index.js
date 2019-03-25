@@ -5,7 +5,7 @@
 
 import React, { Component } from 'react';
 import { View, Text, Image, TouchableWithoutFeedback, TextInput, TouchableOpacity } from 'react-native';
-import { Container, Content, Icon } from 'native-base';
+import { Container, Content, Icon, Picker } from 'native-base';
 import { inject, observer } from 'mobx-react';
 import SyanImagePicker from 'react-native-syan-image-picker';
 import { Header } from '../../../components/HeaderBar';
@@ -22,15 +22,14 @@ const { navigate } = navigationUtils;
 @observer
 class ModifyPersonalInfo extends Component {
     state = {
-        userId: '',
         nickName: '',
+        gender: '',
         description: '',
     };
 
     componentDidMount() {
-        const { AccountContainerStore: { userInfo: { nickName, description, id } }, ModifyPersonalInfoStore: { setPhoto } } = this.props;
-        this.setState({ nickName, description, userId: id });
-        setPhoto();
+        const { AccountContainerStore: { userInfo: { nickName, gender, description } } } = this.props;
+        this.setState({ nickName, gender, description });
     }
 
     selectPhoto = () => {
@@ -74,8 +73,20 @@ class ModifyPersonalInfo extends Component {
                                 value={this.state.nickName}
                                 underlineColorAndroid="transparent"
                                 onChangeText={text => this.setState({ nickName: text })}
-                                style={[fz(30), styles.editor]}
+                                style={[fz(30), styles.editor, publicStyles.c3]}
                             />
+                        </View>
+                    </View>
+                    <View style={[publicStyles.flexRow, publicStyles.aliC, styles.itemWrapper]}>
+                        <View>
+                            <Text style={fz(30)}>昵称</Text>
+                        </View>
+                        <View style={publicStyles.fr}>
+                            <Picker mode="dropdown" note style={[styles.pickerWrapper, publicStyles.c3]} selectedValue={this.state.gender} onValueChange={gender => this.setState({ gender })}>
+                                <Picker.Item label="保密" value={0} />
+                                <Picker.Item label="男" value={1} />
+                                <Picker.Item label="女" value={2} />
+                            </Picker>
                         </View>
                     </View>
                     <View style={[publicStyles.flexRow, publicStyles.aliC, styles.itemWrapper]}>
@@ -89,7 +100,7 @@ class ModifyPersonalInfo extends Component {
                                 value={this.state.description}
                                 underlineColorAndroid="transparent"
                                 onChangeText={text => this.setState({ description: text })}
-                                style={[fz(30), styles.editor]}
+                                style={[fz(30), styles.editor, publicStyles.c3]}
                             />
                         </View>
                     </View>
@@ -104,7 +115,7 @@ class ModifyPersonalInfo extends Component {
                         </TouchableWithoutFeedback>
                     </View>
                     <View style={publicStyles.aliC}>
-                        <TouchableOpacity style={[publicStyles.aliC, publicStyles.jcC, styles.doModifyBtn]} onPress={() => doModifyInfo({ userId: this.state.userId, nickName: this.state.nickName, description: this.state.description })}>
+                        <TouchableOpacity style={[publicStyles.aliC, publicStyles.jcC, styles.doModifyBtn]} onPress={() => doModifyInfo({ nickName: this.state.nickName, gender: this.state.gender, description: this.state.description })}>
                             <View>
                                 <Text style={[fz(30), publicStyles.cWhite]}>确定</Text>
                             </View>

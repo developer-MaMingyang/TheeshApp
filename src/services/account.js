@@ -30,6 +30,6 @@ export const doForgetPwd = ({ phone, password, code }) => request(`${root}/user/
 export const getUploadImageToken = () => request(`${root}/base/getUploadImageToken`);
 
 // 修改资料
-export const modifyUserInfo = ({ id, nickName, description }) => request(`${root}/user/saveData`, {
-    body: { id, nickName, description }
+export const modifyUserInfo = ({ nickName, gender, description }) => request(`${root}/user/saveData`, {
+    body: { nickName, gender, description },
 });

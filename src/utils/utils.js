@@ -4,6 +4,7 @@
 */
 
 import Toast from 'react-native-root-toast';
+import navigationUtils from './navigationUtils';
 
 export const toast = (text) => {
     Toast.show(text, {
@@ -18,6 +19,9 @@ export const toast = (text) => {
 };
 
 export const checkErrorCode = ({ code, message: text }) => {
+    if (code === 3) {
+        navigationUtils.navigate('Login');
+    }
     if (code) {
         toast(text);
         return false;

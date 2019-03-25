@@ -22,6 +22,10 @@ const styles = StyleSheet.create({
         width: scaleSize(300),
         textAlign: 'right',
     },
+    pickerWrapper: {
+        width: scaleSize(100),
+        textAlign: 'right',
+    },
     menuItemIcon: {
         width: scaleSize(44),
     },
