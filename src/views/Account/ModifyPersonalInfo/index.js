@@ -12,7 +12,7 @@ import { Header } from '../../../components/HeaderBar';
 import publicStyles from '../../../styles/public';
 import styles from './styles';
 import { fz } from '../../../styles/size';
-import AvatarPlaceholder from '../../../assets/account/avatar-placeholder.png';
+// import AvatarPlaceholder from '../../../assets/account/avatar-placeholder.png';
 import { toast } from '../../../utils/utils';
 import navigationUtils from '../../../utils/navigationUtils';
 
@@ -52,16 +52,16 @@ class ModifyPersonalInfo extends Component {
             <Container>
                 <Header title="修改资料" />
                 <Content>
-                    <View style={[publicStyles.flexRow, publicStyles.aliC, styles.itemWrapper]}>
-                        <View>
-                            <Text style={fz(30)}>头像</Text>
-                        </View>
-                        <View style={publicStyles.fr}>
-                            <TouchableWithoutFeedback onPress={this.selectPhoto}>
-                                <Image source={userInfo.photo ? { uri: userInfo.photo } : AvatarPlaceholder} style={styles.userPhoto} />
-                            </TouchableWithoutFeedback>
-                        </View>
-                    </View>
+                    {/* <View style={[publicStyles.flexRow, publicStyles.aliC, styles.itemWrapper]}> */}
+                    {/* <View> */}
+                    {/* <Text style={fz(25}>头像</Text> */}
+                    {/* </View> */}
+                    {/* <View style={publicStyles.fr}> */}
+                    {/* <TouchableWithoutFeedback onPress={this.selectPhoto}> */}
+                    {/* <Image source={userInfo.photo ? { uri: userInfo.photo } : AvatarPlaceholder} style={styles.userPhoto} /> */}
+                    {/* </TouchableWithoutFeedback> */}
+                    {/* </View> */}
+                    {/* </View> */}
                     <View style={[publicStyles.flexRow, publicStyles.aliC, styles.itemWrapper]}>
                         <View>
                             <Text style={fz(30)}>昵称</Text>
@@ -79,10 +79,10 @@ class ModifyPersonalInfo extends Component {
                     </View>
                     <View style={[publicStyles.flexRow, publicStyles.aliC, styles.itemWrapper]}>
                         <View>
-                            <Text style={fz(30)}>昵称</Text>
+                            <Text style={fz(30)}>性别</Text>
                         </View>
                         <View style={publicStyles.fr}>
-                            <Picker mode="dropdown" note style={[styles.pickerWrapper, publicStyles.c3]} selectedValue={this.state.gender} onValueChange={gender => this.setState({ gender })}>
+                            <Picker mode="dropdown" style={[styles.pickerWrapper, publicStyles.c3, { textAlign: 'right' }, fz(30)]} selectedValue={this.state.gender} onValueChange={gender => this.setState({ gender })}>
                                 <Picker.Item label="保密" value={0} />
                                 <Picker.Item label="男" value={1} />
                                 <Picker.Item label="女" value={2} />

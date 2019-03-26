@@ -8,7 +8,7 @@ import { scaleSize } from '../../../utils/screen';
 
 const styles = StyleSheet.create({
     itemWrapper: {
-        height: scaleSize(104),
+        height: scaleSize(120),
         paddingLeft: scaleSize(30),
         paddingRight: scaleSize(30),
         borderBottomWidth: scaleSize(1),
@@ -20,11 +20,11 @@ const styles = StyleSheet.create({
     },
     editor: {
         width: scaleSize(300),
+        height: scaleSize(120),
         textAlign: 'right',
     },
     pickerWrapper: {
-        width: scaleSize(100),
-        textAlign: 'right',
+        width: scaleSize(200),
     },
     menuItemIcon: {
         width: scaleSize(44),
